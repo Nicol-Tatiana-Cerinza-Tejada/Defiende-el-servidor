@@ -1,0 +1,56 @@
+{
+  "fecha_utc": "2026-10-24T02:19:02Z a 02:22:26Z",
+  "duracion": "3 min 24 s (incluye pip install)",
+  "entorno": "carpeta nueva fuera del repositorio original, venv nuevo (Python 3.14.4), clon nuevo de GitHub, caché DVC nueva, HF_HOME nuevo, sin token HF",
+  "git_commit_recuperado": "5a29e8bfb8d8ee2f88499628f1747c69b10eef38",
+  "dvc_remote": "https://huggingface.co/datasets/NicolTcT/defiende-el-servidor-dvc/resolve/main",
+  "dvc_huellas": "6/6 archivos coinciden (2 originales vs anexo, 4 preparados vs auditoria.json)",
+  "muestra": {
+    "archivo": "entrada_validacion.csv",
+    "filas": 30,
+    "composicion": "15 normales + 15 ataques de val.csv, semilla 20261016",
+    "sha256": "55a74b6428f0a6eb455109f6dfae64d998e0e7c97001331f6ba60889af2910b5"
+  },
+  "versiones": {
+    "v1": {
+      "hf_revision_sha": "2e405585467e01b576cbfd324488fa07174ef39e",
+      "model_sha256": "e288bc0451744d7ba243b3d847c56a0bfcede62a83a86fc6f3856947a162cb13",
+      "salida_original_sha256": "1a046757e7bf7b11c1d0f726684b6c8bf8a84f3c65fbd0f311bf6db17f79fa9b",
+      "salida_recuperada_sha256": "1a046757e7bf7b11c1d0f726684b6c8bf8a84f3c65fbd0f311bf6db17f79fa9b"
+    },
+    "v2": {
+      "hf_revision_sha": "4ea2e9e7b2245d27a672e58b81d27574843615f7",
+      "model_sha256": "b3c55ced64ce60d2c75f2d0c5fddc3e0e306bea65cd8592c8dbee8806c4c9a8a",
+      "salida_original_sha256": "45b3ee77b1f1ed781db4d6bce2a64dfa82aab1b02c27ca3b2c641db99820a98e",
+      "salida_recuperada_sha256": "45b3ee77b1f1ed781db4d6bce2a64dfa82aab1b02c27ca3b2c641db99820a98e"
+    }
+  },
+  "comparaciones": [
+    {
+      "original": "salida_v1_original.csv",
+      "recovered": "salida_v1_recuperada.csv",
+      "rows": 30,
+      "same_row_ids": true,
+      "label_mismatches": 0,
+      "max_abs_score_diff": 0.0,
+      "tolerance": 1e-09,
+      "result": "COINCIDEN"
+    },
+    {
+      "original": "salida_v2_original.csv",
+      "recovered": "salida_v2_recuperada.csv",
+      "rows": 30,
+      "same_row_ids": true,
+      "label_mismatches": 0,
+      "max_abs_score_diff": 0.0,
+      "tolerance": 1e-09,
+      "result": "COINCIDEN"
+    }
+  ],
+  "tolerancia_score": 1e-09,
+  "extra": {
+    "regeneracion_datos_preparados": "audit_prepare.py en el clon produce los mismos SHA-256 (regeneracion_prepared.txt)",
+    "reproduccion_experimento": "train.py --exp E4_hist_gb en el entorno nuevo: mismas métricas y mismo SHA-256 de model.joblib que v2 (reproduccion_E4.txt)"
+  },
+  "resultado": "RECUPERACION OK"
+}

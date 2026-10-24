@@ -1,0 +1,2 @@
+{"run_id": "851f56897e0e43aca353718a97b4c1ca", "fit_seconds": 4.0, "recall_attack": 0.9761, "precision_attack": 0.9619, "fpr": 0.078, "f1_attack": 0.9689, "f1_normal": 0.936, "macro_f1": 0.9525, "accuracy": 0.9582}
+b3c55ced64ce60d2c75f2d0c5fddc3e0e306bea65cd8592c8dbee8806c4c9a8a
