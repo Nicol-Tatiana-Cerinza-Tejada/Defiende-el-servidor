@@ -21,6 +21,8 @@
     "exp_id": "E4_hist_gb",
     "mlflow_run_id": "83c62ca284954280b3cca861e87dbc9f",
     "git_commit": "0412c387fc1433f164876e00c743bdafaa1f221a",
-    "dvc_prepared_md5": "b3533724917eef902710882f831d14e5.dir"
+    "dvc_prepared_md5": "b3533724917eef902710882f831d14e5.dir",
+    "card_with_test_revision_sha": "a9099d0937ab71bb8052002293fb50415286026d",
+    "card_with_test_model_sha256": "b3c55ced64ce60d2c75f2d0c5fddc3e0e306bea65cd8592c8dbee8806c4c9a8a"
   }
 }

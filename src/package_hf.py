@@ -2,6 +2,7 @@
 
   python src/package_hf.py build   --version v1      -> hf_build/v1/
   python src/package_hf.py publish --version v1      -> sube, etiqueta y registra el SHA
+  python src/package_hf.py add-test                  -> añade el test a la model card de v2
 
 Cada revisión contiene model.joblib (preprocesamiento + estimador), config.json
 (umbral, variables, hashes y referencias), requirements.txt y README.md (model card).
@@ -233,12 +234,61 @@ def publish(version: str) -> None:
     print(f"{version} publicado: {repo}@{sha}")
 
 
+def add_test_to_card() -> None:
+    """Añade el resultado de test a la model card de v2 sin tocar el modelo congelado."""
+    from huggingface_hub import HfApi, hf_hub_download
+    params = load_params()
+    repo = params["huggingface"]["model_repo"]
+    t = json.loads((EVIDENCE / "metricas-test.json").read_text(encoding="utf-8"))
+    m = t["metrics"]
+    section = f"""Evaluación única sobre las **{t['rows_evaluated']} filas** de `UNSW_NB15_testing-set.csv`
+(SHA-256 `{t['dataset']['sha256_original_testing_set']}`), con la revisión congelada
+`{t['huggingface_revision_sha']}` (model.joblib SHA-256 `{t['model_sha256']}`), umbral {t['threshold']}.
+La decisión se congeló en el commit Git `{t['selection_frozen_in_commit']}`, antes de evaluar.
+
+| Métrica | Test | Validación |
+|---|---|---|
+| Recall de ataque | {pct(m['recall_attack'])} | {pct(t_val('recall_attack'))} |
+| Precision de ataque | {pct(m['precision_attack'])} | {pct(t_val('precision_attack'))} |
+| Tasa de falsos positivos | {pct(m['fpr'])} | {pct(t_val('fpr'))} |
+| Macro-F1 | {m['macro_f1']:.4f} | {t_val('macro_f1'):.4f} |
+
+Matriz de test (filas = real): normal → [{m['tn']}, {m['fp']}]; ataque → [{m['fn']}, {m['tp']}].
+
+**El FPR empeora mucho en test** (de 6.7 % a 24.4 %): el tráfico normal del archivo de test es
+distinto del de entrenamiento (más conexiones en estado INT y REQ, y conexiones FIN/sin servicio
+que el modelo confunde con Fuzzers). La validación salió del mismo archivo que el entrenamiento y
+fue optimista. El resultado se conserva sin reajustar modelo ni umbral."""
+    folder = ROOT / "hf_build" / "v2"
+    card = (folder / "README.md").read_text(encoding="utf-8")
+    start = card.index("## Evaluación en test") + len("## Evaluación en test\n\n")
+    end = card.index("## Limitaciones")
+    card = card[:start] + section + "\n\n" + card[end:]
+    (folder / "README.md").write_text(card, encoding="utf-8")
+    api = HfApi()
+    info = api.upload_file(path_or_fileobj=folder / "README.md", path_in_repo="README.md", repo_id=repo,
+                           commit_message="v2: añade resultado de test a la model card (modelo sin cambios)")
+    digest = sha256_file(hf_hub_download(repo, "model.joblib", revision=info.oid))
+    assert digest == t["model_sha256"], "el modelo cambió"
+    data = json.loads(HF_VERSIONS.read_text(encoding="utf-8"))
+    data["v2"]["card_with_test_revision_sha"] = info.oid
+    data["v2"]["card_with_test_model_sha256"] = digest
+    write_json(HF_VERSIONS, data)
+    print(f"model card actualizada: {repo}@{info.oid}; model.joblib sin cambios ({digest})")
+
+
+def t_val(key: str) -> float:
+    return json.loads((EVIDENCE / "seleccion.json").read_text(encoding="utf-8"))["val_metrics"][key]
+
+
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("action", choices=["build", "publish"])
-    ap.add_argument("--version", required=True, choices=["v1", "v2"])
+    ap.add_argument("action", choices=["build", "publish", "add-test"])
+    ap.add_argument("--version", choices=["v1", "v2"])
     args = ap.parse_args()
-    if args.action == "build":
+    if args.action == "add-test":
+        add_test_to_card()
+    elif args.action == "build":
         mlflow.set_tracking_uri(load_params()["mlflow"]["tracking_uri"])
         build(args.version)
     else:
