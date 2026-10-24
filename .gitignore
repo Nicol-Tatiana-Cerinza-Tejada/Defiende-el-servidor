@@ -21,17 +21,21 @@ mlruns/
 mlartifacts/
 
 # Datos y artefactos pesados: se versionan con DVC o en Hugging Face Hub
-data/raw/*
-data/prepared/*
+# (data/raw y data/prepared los ignora data/.gitignore, generado por DVC)
+models/
+hf_build/
+mlflow.db
 *.csv
 *.parquet
 *.pkl
 *.joblib
 *.onnx
 
-# Excepciones para conservar la estructura
-!data/raw/.gitkeep
-!data/prepared/.gitkeep
+# Evidencias pequeñas que sí deben versionarse en Git
+!evidencias/**/*.csv
+
+# Registros de evidencia sí se versionan
+!evidencias/**/*.log
 
 # Archivos del sistema y editores
 .DS_Store

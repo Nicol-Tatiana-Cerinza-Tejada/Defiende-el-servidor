@@ -1,0 +1,28 @@
+# Parámetros globales del taller "Defiende el servidor".
+# Cualquier cambio aquí debe quedar en un commit con su explicación.
+
+data:
+  raw_dir: data/raw
+  prepared_dir: data/prepared
+  train_file: UNSW_NB15_training-set.csv
+  test_file: UNSW_NB15_testing-set.csv
+  source_official: https://research.unsw.edu.au/projects/unsw-nb15-dataset
+  source_mirror: https://raw.githubusercontent.com/Nir-J/ML-Projects/44bbd02b9e70f74dd915218d5eb702f125341ffc/UNSW-Network_Packet_Classification
+  download_date_utc: "2026-10-24T01:43:48Z"
+  expected_sha256:
+    UNSW_NB15_training-set.csv: bec7dd5ec88dc2a0ccc7a07879d338395ed7421750f675fd0339e07dfe0648fa
+    UNSW_NB15_testing-set.csv: 734fe6642edf758f7c94d7d9149426b49d202fe8e7bf0bef47392489c3c0a559
+  expected_rows:
+    UNSW_NB15_training-set.csv: 175341
+    UNSW_NB15_testing-set.csv: 82332
+  target: label
+  excluded_columns: [id, attack_cat, label]
+  categorical_columns: [proto, service, state]
+
+split:
+  seed: 20261016
+  validation_fraction: 0.2
+
+mlflow:
+  tracking_uri: sqlite:///mlflow.db
+  experiment_name: defiende-el-servidor
