@@ -1,0 +1,12 @@
+# Regla de selección de v2, fijada ANTES de ver los resultados de E2-E4.
+# Solo usa validación; el test no interviene.
+model_selection:
+  metric: val_macro_f1          # se compara cada configuración con su umbral por defecto (0.5)
+  candidates: [E1_logreg_base, E2_logreg_log1p, E3_random_forest, E4_hist_gb]
+threshold_selection:
+  # Prioridad del equipo de seguridad: no dejar pasar ataques, pero sin
+  # inundar al analista de falsas alarmas.
+  grid: "0.05 a 0.95, paso 0.05 (el mismo barrido que registra train.py)"
+  constraint: {metric: recall_attack, min: 0.95}
+  objective: macro_f1
+  tie_breaker: lower fpr
