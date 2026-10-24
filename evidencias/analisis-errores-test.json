@@ -1,0 +1,138 @@
+{
+  "note": "Análisis posterior a la evaluación única; no se usó para cambiar modelo ni umbral.",
+  "fpr_by_service_normal_rows": [
+    {
+      "service": "-",
+      "rows": 27375,
+      "pred_attack_rate": 0.2743
+    },
+    {
+      "service": "http",
+      "rows": 4013,
+      "pred_attack_rate": 0.3065
+    },
+    {
+      "service": "dns",
+      "rows": 3068,
+      "pred_attack_rate": 0.0003
+    },
+    {
+      "service": "ftp-data",
+      "rows": 949,
+      "pred_attack_rate": 0.0
+    },
+    {
+      "service": "ftp",
+      "rows": 758,
+      "pred_attack_rate": 0.3549
+    },
+    {
+      "service": "smtp",
+      "rows": 635,
+      "pred_attack_rate": 0.0
+    },
+    {
+      "service": "ssh",
+      "rows": 200,
+      "pred_attack_rate": 0.0
+    },
+    {
+      "service": "radius",
+      "rows": 2,
+      "pred_attack_rate": 1.0
+    }
+  ],
+  "fpr_by_state_normal_rows": [
+    {
+      "state": "FIN",
+      "rows": 24172,
+      "pred_attack_rate": 0.2561
+    },
+    {
+      "state": "CON",
+      "rows": 6633,
+      "pred_attack_rate": 0.0006
+    },
+    {
+      "state": "INT",
+      "rows": 4485,
+      "pred_attack_rate": 0.6245
+    },
+    {
+      "state": "REQ",
+      "rows": 1707,
+      "pred_attack_rate": 0.0088
+    },
+    {
+      "state": "ACC",
+      "rows": 2,
+      "pred_attack_rate": 0.0
+    },
+    {
+      "state": "RST",
+      "rows": 1,
+      "pred_attack_rate": 1.0
+    }
+  ],
+  "recall_by_attack_cat": [
+    {
+      "attack_cat": "Generic",
+      "rows": 18871,
+      "pred_attack_rate": 1.0
+    },
+    {
+      "attack_cat": "Exploits",
+      "rows": 11132,
+      "pred_attack_rate": 0.9936
+    },
+    {
+      "attack_cat": "Fuzzers",
+      "rows": 6062,
+      "pred_attack_rate": 0.8426
+    },
+    {
+      "attack_cat": "DoS",
+      "rows": 4089,
+      "pred_attack_rate": 0.998
+    },
+    {
+      "attack_cat": "Reconnaissance",
+      "rows": 3496,
+      "pred_attack_rate": 0.9983
+    },
+    {
+      "attack_cat": "Analysis",
+      "rows": 677,
+      "pred_attack_rate": 0.9719
+    },
+    {
+      "attack_cat": "Backdoor",
+      "rows": 583,
+      "pred_attack_rate": 0.9983
+    },
+    {
+      "attack_cat": "Shellcode",
+      "rows": 378,
+      "pred_attack_rate": 0.9921
+    },
+    {
+      "attack_cat": "Worms",
+      "rows": 44,
+      "pred_attack_rate": 0.9773
+    }
+  ],
+  "normal_state_share_train": {
+    "FIN": 0.6685,
+    "CON": 0.2174,
+    "INT": 0.0958,
+    "REQ": 0.0168,
+    "RST": 0.0012
+  },
+  "normal_state_share_test": {
+    "FIN": 0.6533,
+    "CON": 0.1793,
+    "INT": 0.1212,
+    "REQ": 0.0461,
+    "ACC": 0.0001
+  }
+}

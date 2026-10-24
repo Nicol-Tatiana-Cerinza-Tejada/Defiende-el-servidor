@@ -1,0 +1,52 @@
+{
+  "evaluated_utc": "2026-10-24T02:17:49+00:00",
+  "version": "v2",
+  "exp_id": "E4_hist_gb",
+  "huggingface_repo": "NicolTcT/defiende-el-servidor",
+  "huggingface_revision_sha": "4ea2e9e7b2245d27a672e58b81d27574843615f7",
+  "model_sha256": "b3c55ced64ce60d2c75f2d0c5fddc3e0e306bea65cd8592c8dbee8806c4c9a8a",
+  "selection_frozen_in_commit": "e378e2005e499e5f48ec153c421c7982e49573cd",
+  "dataset": {
+    "file": "data/prepared/test.csv (todas las filas de UNSW_NB15_testing-set.csv, mismo orden)",
+    "sha256_prepared_test_csv": "2a6532cc6e294ca47209ac906458389c1bf14af648804fb394f8e2b4facd7a78",
+    "sha256_original_testing_set": "734fe6642edf758f7c94d7d9149426b49d202fe8e7bf0bef47392489c3c0a559",
+    "dvc_prepared_md5": "b3533724917eef902710882f831d14e5.dir"
+  },
+  "rows_evaluated": 82332,
+  "threshold": 0.55,
+  "decision_rule": "y_pred = 1 si score_attack >= threshold",
+  "positive_class": "1 = ataque",
+  "zero_division": "0.0",
+  "confusion_matrix": {
+    "rows_true_cols_pred": [
+      [
+        27988,
+        9012
+      ],
+      [
+        1063,
+        44269
+      ]
+    ],
+    "labels": [
+      "normal(0)",
+      "ataque(1)"
+    ]
+  },
+  "metrics": {
+    "recall_attack": 0.9765507809053208,
+    "precision_attack": 0.8308590304236032,
+    "fpr": 0.24356756756756756,
+    "f1_attack": 0.8978329429182766,
+    "f1_normal": 0.8474663517584896,
+    "macro_f1": 0.8726496473383831,
+    "accuracy": 0.8776295972404411,
+    "tp": 44269,
+    "fp": 9012,
+    "tn": 27988,
+    "fn": 1063,
+    "n": 82332
+  },
+  "predictions_file": "evidencias/predicciones-test.csv",
+  "predictions_sha256": "f725c3fa2bc6827efe5d0186bbfa80de78a15fb1332a47ed699d5cd97b3de74b"
+}
