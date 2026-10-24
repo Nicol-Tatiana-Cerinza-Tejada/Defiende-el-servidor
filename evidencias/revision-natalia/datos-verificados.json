@@ -1,0 +1,10 @@
+{
+  "train_rows": 139521,
+  "validation_rows": 34880,
+  "test_rows": 82332,
+  "contradictory_groups_excluded": 229,
+  "contradictory_rows_excluded": 940,
+  "groups_shared_train_validation": 0,
+  "test_labels_match_saved_predictions": true,
+  "all_raw_rows_accounted_for": true
+}

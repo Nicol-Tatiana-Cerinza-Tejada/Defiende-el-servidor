@@ -88,7 +88,7 @@ python src/predict.py --revision "$V2" --input evidencias/recuperacion/entrada_v
 ## Prueba de recuperación en entorno nuevo
 
 ```bash
-bash scripts/prueba_recuperacion.sh v2-code /tmp/recuperacion-defiende
+bash scripts/prueba_recuperacion.sh entrega /tmp/recuperacion-defiende
 ```
 
 Clona el repositorio, crea un venv nuevo, hace `dvc pull` con caché nueva, verifica huellas,

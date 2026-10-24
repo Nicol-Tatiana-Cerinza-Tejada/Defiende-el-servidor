@@ -1,8 +1,8 @@
-# Entrega · MLOps — Defiende el servidor — Grupo A — Nicol Cerinza, Natalia Rios
+# Entrega · MLOps — Defiende el servidor — Grupo A — Nicol Cerinza, Natalia Rios Moreno
 
 ## Integrantes y repositorio
 
-- **Integrantes:** Nicol Tatiana Cerinza Tejada (grupo A) · Natalia Rios (grupo A)
+- **Integrantes:** Nicol Tatiana Cerinza Tejada (grupo A) · Natalia Rios Moreno (grupo A)
 - **GitHub:** https://github.com/Nicol-Tatiana-Cerinza-Tejada/Defiende-el-servidor (público)
 - **Commit final de la entrega:** el que apunta el tag `entrega` (`git rev-parse entrega`). Su SHA completo
   va en el mensaje de entrega.
@@ -14,7 +14,7 @@
 | | v1 | v2 |
 |---|---|---|
 | Experimento | `E1_logreg_base` (regresión logística) | `E4_hist_gb` (HistGradientBoosting) |
-| Commit de código que la produjo | `7315fc6150b5290a62ee510057842a641ed2ff5f` (tag `v1-code`) | entrenamiento `0412c387fc1433f164876e00c743bdafaa1f221a`; selección y empaquetado `e29151c` (tag `v2-code`) |
+| Commit de código que la produjo | `7315fc6150b5290a62ee510057842a641ed2ff5f` (tag `v1-code`) | entrenamiento `0412c387fc1433f164876e00c743bdafaa1f221a`; selección y empaquetado `e29151c191d8d8fdd06d00224b2dcdc2fc03a3cd` (tag `v2-code`) |
 | Datos DVC | `data/raw.dvc` md5 `fe93051ae209ffb0128a31e7a478c009.dir` · `data/prepared.dvc` md5 `b3533724917eef902710882f831d14e5.dir` | iguales a v1 |
 | Run MLflow | `c88acf26956545c8b86da907c31e8a3e` | `83c62ca284954280b3cca861e87dbc9f` |
 | Revisión HF (SHA completo) | `2e405585467e01b576cbfd324488fa07174ef39e` (tag `v1`) | `4ea2e9e7b2245d27a672e58b81d27574843615f7` (tag `v2`, revisión evaluada en test) |
@@ -40,6 +40,7 @@ de v2. Su `model.joblib` es idéntico (mismo SHA-256).
 | Análisis de errores en test (descriptivo) | `evidencias/analisis-errores-test.json` |
 | Prueba de recuperación | `evidencias/recuperacion/` (`resultado.json`, `recuperacion.log`, entrada, salidas originales y recuperadas) |
 | Informe | `informe/informe.pdf` |
+| Revisión independiente de Natalia (resultados, límites y guía de decisiones) | `evidencias/revision-natalia/` |
 
 ### Acceso al almacenamiento DVC
 
@@ -102,8 +103,9 @@ Tamaño de los modelos: v1 9.6 KB, v2 2.2 MB. E3 pesa 69 MB y no se publicó.
   - que ningún grupo de entradas idénticas queda repartido entre train y val;
   - que las métricas de test se recalculan desde `predicciones-test.csv`;
   - la recuperación en entorno nuevo (predicciones idénticas y reentrenamiento con el mismo hash).
+- **Revisión adicional con IA:** se utilizó Codex (OpenAI) para la revisión independiente en la rama `natalia`, ejecutar verificaciones y corregir documentación; no se modificaron la selección ni la evaluación final.
 - **Código externo:** no se copió código de terceros. Se usan las librerías de `requirements.txt` según
   su documentación oficial. Datos: UNSW-NB15 (Moustafa & Slay, 2015), descargados de un mirror fijado.
 - **Contribuciones:**
-  - Nicol Tatiana Cerinza Tejada: [COMPLETAR]
-  - Natalia Rios: [COMPLETAR]
+  - Nicol Tatiana Cerinza Tejada: preparación de la solución entregada (código, auditoría, cuatro experimentos, publicación en Hugging Face, evidencias de recuperación e informe), con la asistencia de IA declarada arriba. Revisar esta descripción antes de la entrega final.
+  - Natalia Rios Moreno: revisión de la guía frente a entrega.md, informe y evidencias; comprobación independiente de recuperación, huellas, predicciones y reproducibilidad de E4; revisión de las explicaciones del split por grupos, exclusión de contradicciones, selección del umbral y errores en test. Estas verificaciones se realizaron con ayuda de Codex; sus resultados y limitaciones constan en evidencias/revision-natalia/. La comprensión personal para la sustentación corresponde a cada integrante.
