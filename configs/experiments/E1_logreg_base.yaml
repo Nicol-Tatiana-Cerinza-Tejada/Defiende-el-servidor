@@ -1,0 +1,19 @@
+id: E1_logreg_base
+family: logistic_regression
+hypothesis: >-
+  Referencia sencilla. Una regresión logística con one-hot de proto/service/state
+  y estandarización de las variables numéricas debería separar gran parte del
+  tráfico de ataque, pero las colas pesadas de bytes/paquetes limitarán su recall.
+change: Línea base (sin cambios previos).
+seed: 20261016
+threshold: 0.5
+preprocessing:
+  numeric_transform: none        # none | log1p
+  scale: true
+  categorical_encoding: onehot   # onehot | ordinal
+model:
+  type: logistic_regression
+  params:
+    C: 1.0
+    max_iter: 2000
+    class_weight: null
