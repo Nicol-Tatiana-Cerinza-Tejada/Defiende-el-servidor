@@ -1,0 +1,26 @@
+{
+  "v1": {
+    "repo_id": "NicolTcT/defiende-el-servidor",
+    "url": "https://huggingface.co/NicolTcT/defiende-el-servidor",
+    "revision_sha": "2e405585467e01b576cbfd324488fa07174ef39e",
+    "tag": "v1",
+    "model_sha256": "e288bc0451744d7ba243b3d847c56a0bfcede62a83a86fc6f3856947a162cb13",
+    "threshold": 0.5,
+    "exp_id": "E1_logreg_base",
+    "mlflow_run_id": "c88acf26956545c8b86da907c31e8a3e",
+    "git_commit": "7315fc6150b5290a62ee510057842a641ed2ff5f",
+    "dvc_prepared_md5": "b3533724917eef902710882f831d14e5.dir"
+  },
+  "v2": {
+    "repo_id": "NicolTcT/defiende-el-servidor",
+    "url": "https://huggingface.co/NicolTcT/defiende-el-servidor",
+    "revision_sha": "4ea2e9e7b2245d27a672e58b81d27574843615f7",
+    "tag": "v2",
+    "model_sha256": "b3c55ced64ce60d2c75f2d0c5fddc3e0e306bea65cd8592c8dbee8806c4c9a8a",
+    "threshold": 0.55,
+    "exp_id": "E4_hist_gb",
+    "mlflow_run_id": "83c62ca284954280b3cca861e87dbc9f",
+    "git_commit": "0412c387fc1433f164876e00c743bdafaa1f221a",
+    "dvc_prepared_md5": "b3533724917eef902710882f831d14e5.dir"
+  }
+}
