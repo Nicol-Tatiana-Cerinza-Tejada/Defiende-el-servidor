@@ -1,0 +1,20 @@
+change: "Cambio de familia: RandomForest (200 \xE1rboles, profundidad 20) con codificaci\xF3\
+  n ordinal."
+family: trees
+hypothesis: "Un bosque aleatorio capta interacciones no lineales (p. ej. sttl x state\
+  \ x service) sin depender de la escala, por lo que deber\xEDa superar a ambas log\xED\
+  sticas en macro-F1 y precision de ataque."
+id: E3_random_forest
+model:
+  params:
+    max_depth: 20
+    min_samples_leaf: 2
+    n_estimators: 200
+    n_jobs: -1
+  type: random_forest
+preprocessing:
+  categorical_encoding: ordinal
+  numeric_transform: none
+  scale: false
+seed: 20261016
+threshold: 0.5

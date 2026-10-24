@@ -1,0 +1,21 @@
+change: "Respecto a E3: HistGradientBoosting (lr=0.1, 300 iteraciones, 63 hojas, categor\xED\
+  as nativas)."
+family: trees
+hypothesis: "El boosting de histogramas corrige secuencialmente los errores y suele\
+  \ calibrar mejor las puntuaciones que el bosque; se espera macro-F1 similar o mejor\
+  \ que E3 con un modelo mucho m\xE1s liviano."
+id: E4_hist_gb
+model:
+  params:
+    early_stopping: false
+    l2_regularization: 0.0
+    learning_rate: 0.1
+    max_iter: 300
+    max_leaf_nodes: 63
+  type: hist_gradient_boosting
+preprocessing:
+  categorical_encoding: ordinal
+  numeric_transform: none
+  scale: false
+seed: 20261016
+threshold: 0.5

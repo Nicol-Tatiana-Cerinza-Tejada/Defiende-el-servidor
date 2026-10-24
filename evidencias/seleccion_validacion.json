@@ -1,0 +1,75 @@
+{
+  "decided_utc": "2026-10-24T01:49:00+00:00",
+  "decided_at_git_commit": "0412c387fc1433f164876e00c743bdafaa1f221a",
+  "rule": {
+    "model_selection": {
+      "metric": "val_macro_f1",
+      "candidates": [
+        "E1_logreg_base",
+        "E2_logreg_log1p",
+        "E3_random_forest",
+        "E4_hist_gb"
+      ]
+    },
+    "threshold_selection": {
+      "grid": "0.05 a 0.95, paso 0.05 (el mismo barrido que registra train.py)",
+      "constraint": {
+        "metric": "recall_attack",
+        "min": 0.95
+      },
+      "objective": "macro_f1",
+      "tie_breaker": "lower fpr"
+    }
+  },
+  "ranking_val_macro_f1_at_0.5": [
+    {
+      "exp_id": "E4_hist_gb",
+      "val_macro_f1": 0.952462
+    },
+    {
+      "exp_id": "E3_random_forest",
+      "val_macro_f1": 0.949794
+    },
+    {
+      "exp_id": "E2_logreg_log1p",
+      "val_macro_f1": 0.926644
+    },
+    {
+      "exp_id": "E1_logreg_base",
+      "val_macro_f1": 0.923497
+    }
+  ],
+  "chosen_exp_id": "E4_hist_gb",
+  "chosen_run_id": "83c62ca284954280b3cca861e87dbc9f",
+  "chosen_threshold": 0.55,
+  "val_metrics_at_chosen_threshold": {
+    "threshold": 0.55,
+    "recall_attack": 0.9712153060786752,
+    "precision_attack": 0.96690155882981,
+    "fpr": 0.0669893681389921,
+    "f1_attack": 0.9690536318109834,
+    "f1_normal": 0.9372232352175044,
+    "macro_f1": 0.953138433514244,
+    "accuracy": 0.9585435779816514,
+    "tp": 22640.0,
+    "fp": 775.0,
+    "tn": 10794.0,
+    "fn": 671.0,
+    "n": 34880.0
+  },
+  "val_metrics_at_0.5": {
+    "recall_attack": 0.9761057011711209,
+    "precision_attack": 0.9618701386540413,
+    "fpr": 0.07796698072434956,
+    "f1_attack": 0.9689356356590799,
+    "f1_normal": 0.9359891194665029,
+    "macro_f1": 0.9524623775627914,
+    "accuracy": 0.958170871559633,
+    "tp": 22754.0,
+    "fp": 902.0,
+    "tn": 10667.0,
+    "fn": 557.0,
+    "n": 34880.0
+  },
+  "test_used": false
+}

@@ -1,0 +1,16 @@
+{
+  "labels": [
+    "normal(0)",
+    "ataque(1)"
+  ],
+  "matrix_rows_true_cols_pred": [
+    [
+      9606,
+      1963
+    ],
+    [
+      312,
+      22999
+    ]
+  ]
+}

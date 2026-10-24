@@ -1,0 +1,19 @@
+change: "Respecto a E1: log1p en num\xE9ricas y class_weight=balanced."
+family: logistic_regression
+hypothesis: "Las variables de volumen (sbytes, dbytes, spkts, rate, sload...) tienen\
+  \ asimetr\xEDa > 30. Aplicar log1p antes de estandarizar har\xE1 la relaci\xF3n\
+  \ m\xE1s lineal y class_weight=balanced reducir\xE1 el sesgo hacia la clase mayoritaria\
+  \ (ataque): se espera menos FPR y mejor macro-F1 que E1."
+id: E2_logreg_log1p
+model:
+  params:
+    C: 1.0
+    class_weight: balanced
+    max_iter: 2000
+  type: logistic_regression
+preprocessing:
+  categorical_encoding: onehot
+  numeric_transform: log1p
+  scale: true
+seed: 20261016
+threshold: 0.5

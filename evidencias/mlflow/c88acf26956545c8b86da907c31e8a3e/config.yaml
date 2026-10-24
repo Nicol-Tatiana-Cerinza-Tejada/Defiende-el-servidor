@@ -1,0 +1,19 @@
+change: "L\xEDnea base (sin cambios previos)."
+family: logistic_regression
+hypothesis: "Referencia sencilla. Una regresi\xF3n log\xEDstica con one-hot de proto/service/state\
+  \ y estandarizaci\xF3n de las variables num\xE9ricas deber\xEDa separar gran parte\
+  \ del tr\xE1fico de ataque, pero las colas pesadas de bytes/paquetes limitar\xE1\
+  n su recall."
+id: E1_logreg_base
+model:
+  params:
+    C: 1.0
+    class_weight: null
+    max_iter: 2000
+  type: logistic_regression
+preprocessing:
+  categorical_encoding: onehot
+  numeric_transform: none
+  scale: true
+seed: 20261016
+threshold: 0.5

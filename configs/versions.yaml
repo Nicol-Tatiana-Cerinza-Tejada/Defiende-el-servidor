@@ -1,0 +1,17 @@
+# Definición de las dos soluciones publicadas en Hugging Face Hub.
+v1:
+  exp_id: E1_logreg_base
+  threshold: 0.5
+  git_tag: v1-code
+  change: >-
+    Primera solución funcional: regresión logística con one-hot + estandarización y
+    umbral por defecto 0.5.
+v2:
+  exp_id: E4_hist_gb
+  threshold: from_selection          # 0.55, leído de evidencias/seleccion_validacion.json
+  git_tag: v2-code
+  change: >-
+    Cambio de modelo y de umbral, decidido solo con validación (configs/selection.yaml):
+    HistGradientBoosting (familia árboles, mejor macro-F1 de los cuatro experimentos) y
+    umbral 0.55, el de mayor macro-F1 con recall de ataque >= 0.95. Frente a v1 reduce
+    la tasa de falsos positivos de 17.0 % a 6.7 % a cambio de perder 1.5 puntos de recall.

@@ -26,3 +26,11 @@ split:
 mlflow:
   tracking_uri: sqlite:///mlflow.db
   experiment_name: defiende-el-servidor
+
+github:
+  repo_url: https://github.com/Nicol-Tatiana-Cerinza-Tejada/Defiende-el-servidor
+
+huggingface:
+  model_repo: NicolTcT/defiende-el-servidor
+  dvc_dataset_repo: NicolTcT/defiende-el-servidor-dvc
+  private: false

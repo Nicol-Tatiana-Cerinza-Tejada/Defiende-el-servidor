@@ -1,0 +1,13 @@
+# Conclusión de validación de cada configuración (escrita tras revisar los runs).
+E1_logreg_base: >-
+  Referencia funcional (v1). Recall de ataque 0.987 pero FPR 0.170: casi 1 de cada 6
+  conexiones normales se alerta. La frontera lineal sin transformar no separa bien el tráfico normal.
+E2_logreg_log1p: >-
+  Hipótesis confirmada a medias: log1p + balanced baja el FPR a 0.077 y sube la precision a 0.961,
+  pero el recall cae a 0.940 (más ataques perdidos). Macro-F1 apenas mejora (0.927 vs 0.924).
+E3_random_forest: >-
+  Hipótesis confirmada: los árboles captan interacciones y suben macro-F1 a 0.950 con recall 0.978
+  y FPR 0.089. Modelo pesado (~69 MB).
+E4_hist_gb: >-
+  Mejor macro-F1 en validación (0.953, FPR 0.078, recall 0.976) con un modelo de ~2 MB.
+  Elegido para v2 según configs/selection.yaml; umbral ajustado en validación a 0.55.
