@@ -1,0 +1,65 @@
+{
+  "checked_code_commit": "1e94c07957f8c742b51fb7ce94e6fe50c81fb011",
+  "test_rows": 82332,
+  "test_predictions_sha256_matches": true,
+  "test_metrics_recalculated": {
+    "recall_attack": 0.9765507809053208,
+    "precision_attack": 0.8308590304236032,
+    "fpr": 0.24356756756756756,
+    "f1_attack": 0.8978329429182766,
+    "f1_normal": 0.8474663517584896,
+    "macro_f1": 0.8726496473383831,
+    "accuracy": 0.8776295972404411,
+    "tp": 44269,
+    "fp": 9012,
+    "tn": 27988,
+    "fn": 1063,
+    "n": 82332
+  },
+  "experiments": [
+    {
+      "exp_id": "E1_logreg_base",
+      "run_id": "c88acf26956545c8b86da907c31e8a3e",
+      "val_macro_f1": 0.9234971166336868
+    },
+    {
+      "exp_id": "E2_logreg_log1p",
+      "run_id": "8439d960ceb045cf85a2ed815fb118c2",
+      "val_macro_f1": 0.9266438793329131
+    },
+    {
+      "exp_id": "E3_random_forest",
+      "run_id": "56cd27b00a6b4575a3108519dc02af54",
+      "val_macro_f1": 0.9497943311998508
+    },
+    {
+      "exp_id": "E4_hist_gb",
+      "run_id": "83c62ca284954280b3cca861e87dbc9f",
+      "val_macro_f1": 0.9524623775627914
+    }
+  ],
+  "hub_revisions": {
+    "v1": {
+      "sha": "2e405585467e01b576cbfd324488fa07174ef39e",
+      "files": [
+        ".gitattributes",
+        "README.md",
+        "config.json",
+        "model.joblib",
+        "requirements.txt"
+      ]
+    },
+    "v2": {
+      "sha": "4ea2e9e7b2245d27a672e58b81d27574843615f7",
+      "files": [
+        ".gitattributes",
+        "README.md",
+        "config.json",
+        "model.joblib",
+        "requirements.txt"
+      ]
+    }
+  },
+  "audit_declared_contradictory_rows": 940,
+  "note": "Independent file-level review; fresh recovery and retraining documented separately. No new test selection or evaluation."
+}

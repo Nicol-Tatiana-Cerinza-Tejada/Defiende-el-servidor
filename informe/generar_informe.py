@@ -96,7 +96,7 @@ def build():
 
     s.append(Paragraph("Defiende el servidor — Informe del taller", ParagraphStyle(
         "t", parent=H1, fontSize=18, spaceAfter=2)))
-    s.append(Paragraph("MLOps 2026-II · Grupo A · Nicol Tatiana Cerinza Tejada y Natalia Rios · "
+    s.append(Paragraph("MLOps 2026-II · Grupo A · Nicol Tatiana Cerinza Tejada y Natalia Rios Moreno · "
                        "Universidad Externado de Colombia", SMALL))
     s.append(Paragraph(
         "Código: github.com/Nicol-Tatiana-Cerinza-Tejada/Defiende-el-servidor · Modelos: "
@@ -174,8 +174,8 @@ def build():
     s.append(Paragraph(
         "<b>Interpretación de errores.</b> E1 detecta casi todos los ataques, pero alerta sobre el 17 % del tráfico normal "
         "(1 963 falsos positivos). E2 confirma en parte su hipótesis: reduce el FPR a la mitad, pero pierde 4,7 puntos de recall, "
-        "así que el balanceo desplaza el error hacia los falsos negativos. Los árboles (E3 y E4) dominan a las logísticas en "
-        "precision y FPR sin perder recall. E4 iguala o supera a E3 con un modelo de 2,2 MB, frente a 69 MB. Los run ID "
+        "así que el cambio conjunto desplaza el error hacia los falsos negativos; no permite aislar el efecto del balanceo. Los árboles (E3 y E4) mejoran macro-F1 respecto a las logísticas y reducen el "
+        "FPR frente a E1, con algo menos de recall. E4 supera a E3 en macro-F1 con un modelo de 2,2 MB, frente a 69 MB. Los run ID "
         "completos y la conclusión de cada experimento están en <i>experimentos.csv</i> y <i>mlflow/runs.json</i>.", P))
 
     # 3. v1 / v2 y umbral
@@ -216,7 +216,7 @@ def build():
     s.append(Paragraph("4. Evaluación final en test", H1))
     s.append(Paragraph(
         f"La selección se congeló en el commit <font face='Courier' size='7.5'>{test['selection_frozen_in_commit']}</font> "
-        "(<i>seleccion.json</i>), anterior a cualquier uso de test. <i>evaluate_test.py</i> se niega a correr si esa decisión "
+        "(<i>seleccion.json</i>), anterior a la evaluación del modelo en test. La auditoría ya había descrito sus etiquetas, sin emplearlas para elegir modelo o umbral. <i>evaluate_test.py</i> se niega a correr si esa decisión "
         "no está en un commit o si el test ya se evaluó. El modelo se descargó de Hugging Face por SHA y se verificó su "
         f"hash. Se evaluó una vez sobre las {test['rows_evaluated']:,} filas del test publicado, sin quitar ninguna. "
         "Las métricas se recalculan desde <i>predicciones-test.csv</i> (row_id, y_true, score_attack, y_pred), con la regla "
@@ -256,6 +256,8 @@ def build():
         "métricas y un <i>model.joblib</i> con el mismo SHA-256 que v2. Entrada, salidas, hashes y log completo están en "
         "<i>evidencias/recuperacion/</i>.", P))
 
+    s.append(Paragraph("La revisión independiente de Natalia repitió la recuperación con resultado RECUPERACION OK. Al reentrenar E4 en WSL1 con dos hilos, coincidieron las métricas y todas las puntuaciones de las 34 880 filas de validación (diferencia máxima 0,0), pero el archivo serializado tuvo otro SHA-256. Esto distingue reproducibilidad de predicciones e identidad binaria. Registros en <i>evidencias/revision-natalia/</i>.", P))
+
     # 6. Limitaciones
     s.append(Paragraph("6. Limitaciones", H1))
     for t in [
@@ -276,13 +278,13 @@ def build():
         "UNSW-NB15: https://research.unsw.edu.au/projects/unsw-nb15-dataset (atribución); mirror Nir-J/ML-Projects@44bbd02.",
         "Documentación de Git, DVC, MLflow Tracking, Hugging Face Hub (descarga por revisión, model cards) y scikit-learn "
         "(common pitfalls).",
-        "Asistencia de IA: Claude Code (Claude Opus 5.5) para código, ejecución y borrador; el detalle está en entrega.md.",
+        "Asistencia de IA: Claude Code (Claude Opus 5.5) para código, ejecución y borrador; y Codex (OpenAI) para revisión independiente; el detalle está en entrega.md.",
     ]:
         s.append(Paragraph(t, SMALL))
 
     doc = SimpleDocTemplate(str(OUT / "informe.pdf"), pagesize=A4, leftMargin=1.8 * cm, rightMargin=1.8 * cm,
                             topMargin=1.5 * cm, bottomMargin=1.5 * cm, title="Defiende el servidor — Informe",
-                            author="Nicol Cerinza, Natalia Rios")
+                            author="Nicol Cerinza, Natalia Rios Moreno")
 
     def footer(canvas, d):
         canvas.setFont("Helvetica", 7)

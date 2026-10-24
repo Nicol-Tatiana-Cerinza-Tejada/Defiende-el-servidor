@@ -1,0 +1,55 @@
+
+===== 2026-10-24T10:28:12Z · 0. Entorno =====
+carpeta: /tmp/rec-natalia-20261024-b
+Linux LAPTOP-B4K2Q68B 4.4.0-26100-Microsoft #9278-Microsoft Fri Jan 01 08:00:00 PST 2016 x86_64 GNU/Linux
+Python 3.14.4
+git version 2.53.0
+
+===== 2026-10-24T10:28:13Z · 1. Código: clon nuevo en la revisión entrega =====
+commit: 1e94c07957f8c742b51fb7ce94e6fe50c81fb011
+entrega
+
+===== 2026-10-24T10:28:15Z · 1b. Dependencias fijadas en un venv nuevo =====
+Compatibilidad local: crear venv sin ensurepip y arrancar pip desde bootstrap oficial.
+Python 3.14.4
+dvc==3.67.1
+huggingface_hub==2.2.0
+joblib==1.6.0
+mlflow==3.17.2
+numpy==2.5.4
+pandas==3.0.6
+scikit-learn==1.9.1
+
+===== 2026-10-24T10:32:56Z · 2. Datos: dvc pull desde el remote entregado (caché nueva) =====
+hfstore 
+https://huggingface.co/datasets/NicolTcT/defiende-el-servidor-dvc/resolve/main  
+(default)
+sin caché DVC previa
+A       data/prepared/
+A       data/raw/
+8 files fetched and 6 files added
+raw  UNSW_NB15_training-set.csv: bec7dd5ec88dc2a0ccc7a07879d338395ed7421750f675fd0339e07dfe0648fa OK
+raw  UNSW_NB15_testing-set.csv: 734fe6642edf758f7c94d7d9149426b49d202fe8e7bf0bef47392489c3c0a559 OK
+prep train.csv: ed47d3cd99741db2cd3ff057abb3c59b2ecead1d6f671bdd5a4c0a0cd0f4127d OK
+prep val.csv: 53c7022ee8db09436b54e34c4e81e4bc09b6a6dd92c8a6dd2367258184053c83 OK
+prep test.csv: 2a6532cc6e294ca47209ac906458389c1bf14af648804fb394f8e2b4facd7a78 OK
+prep splits.csv: a2b66d614b600e4125672fc74424e2c942d67b312b4796d8796fc29a25e2f68a OK
+
+===== 2026-10-24T10:33:27Z · 3-4. Modelos: descarga por SHA completo y predicción sobre la muestra fija =====
+muestra: 30 filas de validación, sha256 55a74b6428f0a6eb455109f6dfae64d998e0e7c97001331f6ba60889af2910b5
+--- v1 @ 2e405585467e01b576cbfd324488fa07174ef39e
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+{"version": "v1", "revision": "2e405585467e01b576cbfd324488fa07174ef39e", "model_sha256": "e288bc0451744d7ba243b3d847c56a0bfcede62a83a86fc6f3856947a162cb13", "threshold": 0.5, "rows": 30, "attacks_predicted": 17}
+1a046757e7bf7b11c1d0f726684b6c8bf8a84f3c65fbd0f311bf6db17f79fa9b  /tmp/rec-natalia-20261024-b/salidas/salida_v1_recuperada.csv
+--- v2 @ 4ea2e9e7b2245d27a672e58b81d27574843615f7
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+{"version": "v2", "revision": "4ea2e9e7b2245d27a672e58b81d27574843615f7", "model_sha256": "b3c55ced64ce60d2c75f2d0c5fddc3e0e306bea65cd8592c8dbee8806c4c9a8a", "threshold": 0.55, "rows": 30, "attacks_predicted": 15}
+45b3ee77b1f1ed781db4d6bce2a64dfa82aab1b02c27ca3b2c641db99820a98e  /tmp/rec-natalia-20261024-b/salidas/salida_v2_recuperada.csv
+
+===== 2026-10-24T10:33:52Z · 5. Comparación con las salidas guardadas (tolerancia 1e-9) =====
+{"original": "evidencias/recuperacion/salida_v1_original.csv", "recovered": "/tmp/rec-natalia-20261024-b/salidas/salida_v1_recuperada.csv", "rows": 30, "same_row_ids": true, "label_mismatches": 0, "max_abs_score_diff": 0.0, "tolerance": 1e-09, "result": "COINCIDEN"}
+{"original": "evidencias/recuperacion/salida_v2_original.csv", "recovered": "/tmp/rec-natalia-20261024-b/salidas/salida_v2_recuperada.csv", "rows": 30, "same_row_ids": true, "label_mismatches": 0, "max_abs_score_diff": 0.0, "tolerance": 1e-09, "result": "COINCIDEN"}
+
+===== 2026-10-24T10:33:54Z · Resultado =====
+RECUPERACION OK
+log: /tmp/rec-natalia-20261024-b/recuperacion.log
