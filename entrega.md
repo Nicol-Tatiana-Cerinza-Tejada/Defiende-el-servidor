@@ -4,7 +4,7 @@
 
 - **Integrantes:** Nicol Tatiana Cerinza Tejada (grupo A) · Natalia Rios Moreno (grupo A)
 - **GitHub:** https://github.com/Nicol-Tatiana-Cerinza-Tejada/Defiende-el-servidor (público)
-- **Commit final de la entrega:** el que apunta el tag `entrega` (`git rev-parse entrega`). Su SHA completo
+- **Commit final de la entrega:** el que apunta el tag `entrega-final` (`git rev-parse entrega-final`). El tag `entrega` marca la versión anterior a la revisión de Natalia. Su SHA completo
   va en el mensaje de entrega.
 - **Modelos (Hugging Face):** https://huggingface.co/NicolTcT/defiende-el-servidor (público)
 - **Almacenamiento DVC:** https://huggingface.co/datasets/NicolTcT/defiende-el-servidor-dvc (público)
@@ -67,7 +67,7 @@ python src/train.py --exp E4_hist_gb
 python src/predict.py --revision 2e405585467e01b576cbfd324488fa07174ef39e --input evidencias/recuperacion/entrada_validacion.csv --output pred_v1.csv
 python src/predict.py --revision 4ea2e9e7b2245d27a672e58b81d27574843615f7 --input evidencias/recuperacion/entrada_validacion.csv --output pred_v2.csv
 # Prueba completa de recuperación en carpeta nueva
-bash scripts/prueba_recuperacion.sh entrega /tmp/recuperacion-defiende
+bash scripts/prueba_recuperacion.sh entrega-final /tmp/recuperacion-defiende
 ```
 
 ### Tiempo y recursos medidos
@@ -107,5 +107,5 @@ Tamaño de los modelos: v1 9.6 KB, v2 2.2 MB. E3 pesa 69 MB y no se publicó.
 - **Código externo:** no se copió código de terceros. Se usan las librerías de `requirements.txt` según
   su documentación oficial. Datos: UNSW-NB15 (Moustafa & Slay, 2015), descargados de un mirror fijado.
 - **Contribuciones:**
-  - Nicol Tatiana Cerinza Tejada: preparación de la solución entregada (código, auditoría, cuatro experimentos, publicación en Hugging Face, evidencias de recuperación e informe), con la asistencia de IA declarada arriba. Revisar esta descripción antes de la entrega final.
+  - Nicol Tatiana Cerinza Tejada: preparación de la solución entregada (código, auditoría, cuatro experimentos, publicación en Hugging Face, evidencias de recuperación e informe), con la asistencia de IA declarada arriba.
   - Natalia Rios Moreno: revisión de la guía frente a entrega.md, informe y evidencias; comprobación independiente de recuperación, huellas, predicciones y reproducibilidad de E4; revisión de las explicaciones del split por grupos, exclusión de contradicciones, selección del umbral y errores en test. Estas verificaciones se realizaron con ayuda de Codex; sus resultados y limitaciones constan en evidencias/revision-natalia/. La comprensión personal para la sustentación corresponde a cada integrante.
